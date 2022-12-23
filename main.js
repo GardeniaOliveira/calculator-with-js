@@ -24,6 +24,7 @@ let value1 = '';
 let value2 = '';
 let operator = '';
 
+
 function writeOnScreen(number) {
     if(number === "-"){
 
@@ -39,8 +40,6 @@ function writeOnScreen(number) {
         nextNumber = nextNumber + number; 
         result.innerText = nextNumber;  
     } 
-
-
 }
 function changeToNegative(sign){
     if (operator) {
@@ -61,10 +60,7 @@ function changeToNumber(number) {
     value1 = value1 + number; 
    
     }
-    
-
 }
-
 
 zero.addEventListener("click", function () {
     writeOnScreen(0);
@@ -124,20 +120,19 @@ divided.addEventListener("click", function () {
     writeOnScreen("/");
 });
 percent.addEventListener("click", function () {
+    operator='percent';
     writeOnScreen("%");
 });
 negativeNumber.addEventListener("click", function () {
     writeOnScreen("-");
-    changeToNegative("-");
-  
-   
+    changeToNegative("-"); 
 });
 
 deleteNumber.addEventListener("click", function () {
-    cleanResult()
+    deleteLastNumber(result.innerText)
+  
 });
 resetNumber.addEventListener("click", function () {
-    console.log('passou aqui')
     cleanResult()
 
 });
@@ -167,7 +162,7 @@ function division(n1, n2) {
 
 }
 function percentage(n1, n2) {
-    let resultPercentage = n1*n2 / 100 ;
+    let resultPercentage = (n1*n2) / 100 ;
     result.innerText = resultPercentage;
     return resultPercentage;
 
@@ -191,13 +186,24 @@ function calculate(n1, operator, n2) {
     value2 = "";
     value1 = result.innerText; 
     nextNumber = value1;
-    console.log(value1);
 }
 equals.addEventListener("click", function () {
     calculate(parseInt(value1), operator, parseInt(value2))
 
 });
-
+function deleteLastNumber(number){
+    if(number.length === 1){
+        number = 0;
+        cleanResult()
+        result.innerText = 0;
+       
+    }else{
+        let str = number.slice(0, -1);
+        nextNumber = str;
+        result.innerText = str;
+       
+    }
+}
 
 function cleanResult() {
     nextNumber = "";
