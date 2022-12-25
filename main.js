@@ -51,7 +51,7 @@ function changeToNegative(sign){
     }
 }
 
-function changeToNumber(number) {
+function concatenate(number) { //only concatenate strings 
     if (operator) {
         value2 = value2 + number; 
     }
@@ -61,46 +61,54 @@ function changeToNumber(number) {
    
     }
 }
+function parseToNumber(number){  //change strings to numbers during the calculate  
+    if(/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/
+      .test(number))
+      return Number(number);
+        return NaN;
+
+}
+
 
 zero.addEventListener("click", function () {
     writeOnScreen(0);
-    changeToNumber(0)
+    concatenate(0)
 });
 one.addEventListener("click", function () {
     writeOnScreen(1);
-    changeToNumber(1)
+    concatenate(1)
 });
 two.addEventListener("click", function () {
     writeOnScreen(2);
-    changeToNumber(2)
+    concatenate(2)
 });
 three.addEventListener("click", function () {
     writeOnScreen(3);
-    changeToNumber(3)
+    concatenate(3)
 });
 four.addEventListener("click", function () {
     writeOnScreen(4);
-    changeToNumber(4)
+    concatenate(4)
 });
 five.addEventListener("click", function () {
     writeOnScreen(5);
-    changeToNumber(5)
+    concatenate(5)
 });
 six.addEventListener("click", function () {
     writeOnScreen(6);
-    changeToNumber(6)
+    concatenate(6)
 });
 seven.addEventListener("click", function () {
     writeOnScreen(7);
-    changeToNumber(7)
+    concatenate(7)
 });
 eight.addEventListener("click", function () {
     writeOnScreen(8);
-    changeToNumber(8)
+    concatenate(8)
 });
 nine.addEventListener("click", function () {
     writeOnScreen(9);
-    changeToNumber(9)
+    concatenate(9)
 });
 plus.addEventListener("click", function () {
     operator = 'plus';
@@ -127,7 +135,10 @@ negativeNumber.addEventListener("click", function () {
     writeOnScreen("-");
     changeToNegative("-"); 
 });
-
+dot.addEventListener("click", function () {
+    writeOnScreen("."); 
+    concatenate('.')
+})
 deleteNumber.addEventListener("click", function () {
     deleteLastNumber(result.innerText)
   
@@ -169,6 +180,8 @@ function percentage(n1, n2) {
 }
 
 function calculate(n1, operator, n2) {
+        parseToNumber(n1);
+        parseToNumber(n2);
     if (operator === 'plus') {
         result.innerText = sum(n1, n2); 
     } else if (operator === 'minus') {
@@ -188,7 +201,7 @@ function calculate(n1, operator, n2) {
     nextNumber = value1;
 }
 equals.addEventListener("click", function () {
-    calculate(parseInt(value1), operator, parseInt(value2))
+    calculate(value1, operator, value2)
 
 });
 function deleteLastNumber(number){
@@ -204,14 +217,17 @@ function deleteLastNumber(number){
        
     }
 }
-
 function cleanResult() {
     nextNumber = "";
     value1 = "";
     value2 = "";
     operator = "";
-    result.innerText = " ";
+    result.innerText = 0;
 
 }
 
 
+
+
+
+ 
