@@ -125,7 +125,7 @@ times.addEventListener("click", function () {
 });
 divided.addEventListener("click", function () {
     operator = 'divided';
-    writeOnScreen("/");
+    writeOnScreen("÷");
 });
 percent.addEventListener("click", function () {
     operator='percent';
@@ -174,14 +174,15 @@ function division(n1, n2) {
 }
 function percentage(n1, n2) {
     let resultPercentage = (n1*n2) / 100 ;
+    let resultPercentageTotal = n1 - resultPercentage;
     result.innerText = resultPercentage;
-    return resultPercentage;
+    return resultPercentageTotal;
 
 }
 
 function calculate(n1, operator, n2) {
-        parseToNumber(n1);
-        parseToNumber(n2);
+      n1 = parseToNumber(n1);
+      n2 =  parseToNumber(n2);
     if (operator === 'plus') {
         result.innerText = sum(n1, n2); 
     } else if (operator === 'minus') {
