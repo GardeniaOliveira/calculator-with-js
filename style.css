@@ -28,9 +28,10 @@ body{
     font-size: 30px;
     color: white;
     font-weight: bold;
-    padding: 20px;
+    /* padding: 20px; */
     margin-top: 20px;
-    text-align: end;
+    text-align: right;
+    overflow-wrap: break-word;
    
 }
 
