@@ -144,8 +144,23 @@ negativeNumber.addEventListener("click", function () {
     changeToNegative("-"); 
 });
 dot.addEventListener("click", function () {
+        // if(value1.includes(".")){
+        //     writeOnScreen(""); 
+        // }
+        //  else{
+        //     writeOnScreen("."); 
+          
+        // } 
+
+        // if(value2.includes(".")){
+        //     writeOnScreen(""); 
+        // }
+        //  else{
+        //     writeOnScreen("."); 
+          
+        // } 
         writeOnScreen("."); 
-        concatenate('.')
+        concatenate(".")  
 })
 deleteNumber.addEventListener("click", function () {
     deleteLastNumber(result.innerText)

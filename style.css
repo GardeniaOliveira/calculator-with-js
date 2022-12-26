@@ -14,6 +14,7 @@ body{
 }
 .container{
     width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,14 +22,14 @@ body{
 }
 .display{
     display: block;
-    height: 20vh;
+    height: 30vh;
     
 } 
 #result{
-    font-size: 30px;
+    font-size: 60px;
     color: white;
     font-weight: bold;
-    /* padding: 20px; */
+    padding: 20px;
     margin-top: 20px;
     text-align: right;
     overflow-wrap: break-word;
@@ -42,10 +43,13 @@ body{
 
 .container-col{
     display: flex;
+    height: 70vh;
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
-    gap: 10px;
+    gap: 5vw;
+    row-gap: 8vw;
+    padding: 0 10px;
 }
 .bg-orange{
     background: var(--orange);
@@ -57,20 +61,50 @@ body{
 button{
     background-color: rgb(30, 28, 28);
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     text-align: center;
-    width: 80px;
-    height:80px;
+    width: 18vw;
+    height: 18vw;
     border-radius: 50%;
-    
+    border: none;
 }
 button:hover{
     font-size: 22px;
 }
-@media only screen and (min-width: 820px) {
-    .container{
+@media only screen and (min-width: 921px) {
+    /* .container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+    margin-top: 50px;
+    padding: 20px;
+    align-content: center;
+} 
+.container-col{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    gap: 5px;
+    padding-bottom: 20px;
+    
+}
+.display{
+    height: 20vh;
+    padding: 20px;
+    
+}
+.display, .container-col{
+    width: 240px;
+} 
+
+#result{
+    font-size: 30px;
+} */
+.container{
     margin-top: 50px;
     padding: 20px;
     align-content: center;
@@ -94,6 +128,22 @@ button:hover{
  button{
     width: 50px;
     height: 50px;
+}
+
+}
+
+@media only screen and (max-width: 920px) and (min-width: 768px)  {
+#result {
+    font-size: 80px;
+}
+.container-col {
+    padding-bottom: 10px;
+}
+.display, .container-col {
+    width: 100%; 
+} 
+button{
+    font-size: 60px;
 }
 
 }
