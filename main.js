@@ -40,6 +40,7 @@ function writeOnScreen(number) {
         nextNumber = nextNumber + number; 
         result.innerText = nextNumber;  
     } 
+    console.log(nextNumber);
 }
 function changeToNegative(sign){
     if (operator) {
@@ -60,6 +61,7 @@ function concatenate(number) { //only concatenate strings
     value1 = value1 + number; 
    
     }
+
 }
 function parseToNumber(number){  //change strings to numbers during the calculate  
     if(/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/
@@ -111,23 +113,29 @@ nine.addEventListener("click", function () {
     concatenate(9)
 });
 plus.addEventListener("click", function () {
-    operator = 'plus';
-    writeOnScreen("+");
-
+        calculateInTheOperation()
+        operator = 'plus';
+        writeOnScreen("+");
+    
+ 
 });
 minus.addEventListener("click", function () {
+    calculateInTheOperation()
     operator = 'minus';
     writeOnScreen("-");
 });
 times.addEventListener("click", function () {
+    calculateInTheOperation()
     operator = 'times';
-    writeOnScreen("*");
+    writeOnScreen("x");
 });
 divided.addEventListener("click", function () {
+    calculateInTheOperation()
     operator = 'divided';
     writeOnScreen("÷");
 });
 percent.addEventListener("click", function () {
+    calculateInTheOperation()
     operator='percent';
     writeOnScreen("%");
 });
@@ -180,27 +188,40 @@ function percentage(n1, n2) {
 
 }
 
+function calculateInTheOperation(){ //calculate when click on math operation
+    
+    if(value1 && operator && value2){
+     calculate(value1, operator, value2);
+    }
+    }
 function calculate(n1, operator, n2) {
       n1 = parseToNumber(n1);
       n2 =  parseToNumber(n2);
-    if (operator === 'plus') {
-        result.innerText = sum(n1, n2); 
-    } else if (operator === 'minus') {
-        result.innerText = subtraction(n1, n2);
-    } else if (operator === 'times') {
-        result.innerText = multiplication(n1, n2);
-    } else if (operator === 'divided') {
-        result.innerText = division(n1, n2);
-    }
-    else if (operator === 'percent') {
-        result.innerText = percentage(n1, n2);
-    }
+      console.log(n1);
+      console.log(operator);
+      console.log(n2);
+
+        if (operator === 'plus') {
+            result.innerText = sum(n1, n2); 
+        } else if (operator === 'minus') {
+            result.innerText = subtraction(n1, n2);
+        } else if (operator === 'times') {
+            result.innerText = multiplication(n1, n2);
+        } else if (operator === 'divided') {
+            result.innerText = division(n1, n2);
+        }
+        else if (operator === 'percent') {
+            result.innerText = percentage(n1, n2);
+        }
+   
+   
    
     operator = "";
     value2 = "";
     value1 = result.innerText; 
     nextNumber = value1;
 }
+
 equals.addEventListener("click", function () {
     calculate(value1, operator, value2)
 
@@ -230,5 +251,3 @@ function cleanResult() {
 
 
 
-
- 
