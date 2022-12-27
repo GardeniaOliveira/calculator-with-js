@@ -18,7 +18,6 @@ body {
 .container {
   width: 100vw;
   min-height: 100vh;
-  padding-left: 20px;
   background: #000;
   display: grid;
   justify-content: center;
@@ -30,7 +29,7 @@ body {
 
 .display {
   grid-column: 1 / -1;
-  background: black;
+  background-color: black;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -49,27 +48,30 @@ body {
 }
 
 .bg-orange {
-  background: var(--orange);
+  background-color: var(--orange);
 }
 .bg-light {
-  background: var(--light-gray);
+  background-color: var(--light-gray);
+  color: #000;
 }
 
 button {
   background-color: rgb(30, 28, 28);
   color: white;
-  font-size: 2rem;
+  font-size: 35px;
   border: none;
   outline: none;
-  font-weight: 600;
+  font-weight: 500;
   text-align: center;
   width: 80%;
   height: 80%;
+  margin-left: 10px;
   border-radius: 50%;
   cursor: pointer;
 }
 button:hover {
-  font-size: 2.5rem;
+  font-size: 40px;
+  font-weight: 600;
 }
 
 @media only screen and (min-width: 768px) {
@@ -79,20 +81,19 @@ button:hover {
     grid-template-columns: repeat(4, 50px);
     grid-template-rows: minmax(120px, auto) repeat(5, 50px);
     margin-top: 40px;
-    padding-left: 20px;
     grid-gap: 5px;
   }
   #result {
     font-size: 40px;
   }
   button {
-    font-size: 1.2rem;
+    font-size: 20px;
     width: 80%;
     height: 80%;
     border-radius: 50%;
     cursor: pointer;
   }
   button:hover {
-    font-size: 1.5rem;
+    font-size: 25px;
   }
 }

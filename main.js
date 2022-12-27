@@ -41,9 +41,7 @@ function writeOnScreen(number) {
         nextNumber = nextNumber + number;
         result.innerText = nextNumber;
     }
-
-
-    console.log(nextNumber);
+    console.log(`nextNumber : ${nextNumber}`);
 }
 function changeToNegative(sign) {
     if (action) {
@@ -54,23 +52,19 @@ function changeToNegative(sign) {
 
     }
 }
-
 function concatenate(number) { //only concatenate strings 
+    resultTotal = "";
 
     if (action) {
         value2 = value2 + number;
-        // value2 = separator(value2);
-        // console.log(value2);
     }
     else {
 
         value1 = value1 + number;
-        // value1 = separator(value1);
-        // console.log(value1);
-
     }
 
-
+    console.log(`value1 : ${value1}`);
+    console.log(`value2 : ${value2}`);
 }
 function parseToNumber(number) {  //change strings to numbers during the calculate  
     if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/
@@ -79,8 +73,6 @@ function parseToNumber(number) {  //change strings to numbers during the calcula
     return NaN;
 
 }
-
-
 zero.addEventListener("click", function () {
     writeOnScreen(0);
     concatenate(0)
@@ -130,7 +122,7 @@ plus.addEventListener("click", function () {
 minus.addEventListener("click", function () {
     calculateInTheOperation()
     action = 'minus';
-    writeOnScreen("-");
+    writeOnScreen("–");
 });
 times.addEventListener("click", function () {
     calculateInTheOperation()
@@ -176,7 +168,9 @@ resetNumber.addEventListener("click", function () {
     cleanResult()
 
 });
-
+equals.addEventListener("click", function () {
+    calculate(value1, action, value2);
+});
 function sum(n1, n2) {
     let resultSum = n1 + n2;
     value1 = resultSum;
@@ -208,25 +202,27 @@ function percentage(n1, n2) {
     return resultPercentageTotal;
 
 }
-
+function separator(number) {
+    let str = number.toString().split(".");
+    str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return str.join(".");
+}
 function calculateInTheOperation() { //calculate when click second time on math operation
 
     if (value1 && action && value2) {
         let result = calculate(value1, action, value2);
         value1 = result; //subscribe value1 with the result of function calculate to start calculation again
         nextNumber = result;
-        console.log(nextNumber);
+        console.log(`nextNumber inside result: ${nextNumber}`);
+
     } else if (resultTotal) {
         value1 = resultTotal;  //if there is a result after calculate, value1 will be this result; 
         nextNumber = resultTotal;
-        console.log(value1);
+        value1 = resultTotal;
+        nextNumber = resultTotal;
+        console.log(`value1 inside resultTotal : ${value1}`);
 
     }
-}
-function separator(number) {
-    let str = number.toString().split(".");
-    str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    return str.join(".");
 }
 
 function calculate(n1, operator, n2) {
@@ -257,16 +253,16 @@ function calculate(n1, operator, n2) {
     value2 = "";
     nextNumber = "";
     resultTotal = result.innerText;  //store the result, only exist when click in equal;  
+    console.log(`ResultTotal : ${resultTotal}`);
     return result.innerText;
 
 
 }
-
-equals.addEventListener("click", function () {
-    calculate(value1, action, value2);
-});
 function deleteLastNumber(number) {
-    if (number.length === 1) {
+    if (resultTotal) {
+        return
+    }
+    if (number.length === 1) { // delete only on screen
         number = 0;
         cleanResult()
         result.innerText = 0;
@@ -277,6 +273,16 @@ function deleteLastNumber(number) {
         result.innerText = str;
 
     }
+
+    if (action) {
+        str = value2.slice(0, -1); // update of value2 without delete numbers
+        value2 = str;
+    }
+    else {
+        str = value1.slice(0, -1); // update of value1 without delete numbers 
+        value1 = str;
+    }
+
 }
 function cleanResult() {
     nextNumber = "";
