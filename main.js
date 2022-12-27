@@ -41,6 +41,8 @@ function writeOnScreen(number) {
         nextNumber = nextNumber + number;
         result.innerText = nextNumber;
     }
+
+
     console.log(nextNumber);
 }
 function changeToNegative(sign) {
@@ -54,14 +56,20 @@ function changeToNegative(sign) {
 }
 
 function concatenate(number) { //only concatenate strings 
+
     if (action) {
         value2 = value2 + number;
+        // value2 = separator(value2);
+        // console.log(value2);
     }
     else {
 
         value1 = value1 + number;
+        // value1 = separator(value1);
+        // console.log(value1);
 
     }
+
 
 }
 function parseToNumber(number) {  //change strings to numbers during the calculate  
@@ -140,6 +148,11 @@ percent.addEventListener("click", function () {
     writeOnScreen("%");
 });
 negativeNumber.addEventListener("click", function () {
+    if (!value2 && value1.includes("-")) {
+        return;
+    } else if (value2.includes("-")) {
+        return;
+    }
     writeOnScreen("-");
     changeToNegative("-");
 });
@@ -166,13 +179,13 @@ resetNumber.addEventListener("click", function () {
 
 function sum(n1, n2) {
     let resultSum = n1 + n2;
-    result.innerText = resultSum;
+    value1 = resultSum;
     return resultSum;
 
 }
 function subtraction(n1, n2) {
     let resultSubtraction = n1 - n2;
-    result.innerText = resultSubtraction;
+    value1 = resultSubtraction;
     return resultSubtraction;
 
 }
@@ -202,15 +215,27 @@ function calculateInTheOperation() { //calculate when click second time on math 
         let result = calculate(value1, action, value2);
         value1 = result; //subscribe value1 with the result of function calculate to start calculation again
         nextNumber = result;
+        console.log(nextNumber);
     } else if (resultTotal) {
         value1 = resultTotal;  //if there is a result after calculate, value1 will be this result; 
         nextNumber = resultTotal;
+        console.log(value1);
 
     }
 }
+function separator(number) {
+    let str = number.toString().split(".");
+    str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return str.join(".");
+}
+
 function calculate(n1, operator, n2) {
+
+
     n1 = parseToNumber(n1);
     n2 = parseToNumber(n2);
+
+
 
     if (operator === 'plus') {
         result.innerText = sum(n1, n2);
@@ -225,11 +250,13 @@ function calculate(n1, operator, n2) {
         result.innerText = percentage(n1, n2);
     }
 
+    result.innerText = separator(result.innerText);
+
     value1 = ""; //continue empty to subscibe the result for new numbers;  
     action = "";
     value2 = "";
     nextNumber = "";
-    resultTotal = result.innerText;  //store the result;  
+    resultTotal = result.innerText;  //store the result, only exist when click in equal;  
     return result.innerText;
 
 
@@ -237,8 +264,6 @@ function calculate(n1, operator, n2) {
 
 equals.addEventListener("click", function () {
     calculate(value1, action, value2);
-
-
 });
 function deleteLastNumber(number) {
     if (number.length === 1) {
@@ -261,6 +286,7 @@ function cleanResult() {
     result.innerText = 0;
 
 }
+
 
 
 

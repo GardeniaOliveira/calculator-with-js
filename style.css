@@ -1,149 +1,98 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-:root{
-    --light-gray :  #a0a0a0;
-    --medium-gray :  #313131;
-    --orange:  #f69906;
-
+:root {
+  --light-gray: #a0a0a0;
+  --medium-gray: #313131;
+  --orange: #f69906;
 }
-body{
-    font-family: 'Roboto', sans-serif;
+body {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
-.container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
-}
-.display{
-    display: block;
-    height: 30vh;
-    
-} 
-#result{
-    font-size: 60px;
-    color: white;
-    font-weight: bold;
-    padding: 20px;
-    margin-top: 20px;
-    text-align: right;
-    overflow-wrap: break-word;
-   
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  padding-left: 20px;
+  background: #000;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(4, 90px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 90px);
+  row-gap: 10px;
 }
 
-.display, .container-col{
-    background-color: black;
-    width: 100%;
+.display {
+  grid-column: 1 / -1;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  word-wrap: break-word;
+  word-break: break-all;
 }
-
-.container-col{
-    display: flex;
-    height: 70vh;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-start;
-    gap: 5vw;
-    row-gap: 8vw;
-    padding: 0 10px;
-}
-.bg-orange{
-    background: var(--orange);
-}
-.bg-light{
-    background: var(--light-gray);
-}
-
-button{
-    background-color: rgb(30, 28, 28);
-    color: white;
-    font-size: 30px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 600;
-    text-align: center;
-    width: 18vw;
-    height: 18vw;
-    border-radius: 50%;
-    border: none;
-}
-button:hover{
-    font-size: 22px;
-}
-@media only screen and (min-width: 921px) {
-    /* .container{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;    
-    margin-top: 50px;
-    padding: 20px;
-    align-content: center;
-} 
-.container-col{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    gap: 5px;
-    padding-bottom: 20px;
-    
-}
-.display{
-    height: 20vh;
-    padding: 20px;
-    
-}
-.display, .container-col{
-    width: 240px;
-} */
-
-#result{
-    font-size: 30px;
-} 
-.container{
-    margin-top: 50px;
-    padding: 20px;
-    align-content: center;
-} 
-.container-col{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    gap: 5px;
-    padding-bottom: 20px;
-    
-}
-.display{
-    height: 20vh;
-    padding: 20px;
-}
-.display, .container-col{
-    width: 240px;
-} 
- button{
-    width: 50px;
-    height: 50px;
-}
-
-}
-
-@media only screen and (max-width: 920px) and (min-width: 768px)  {
 #result {
-    font-size: 80px;
-}
-.container-col {
-    padding-bottom: 10px;
-}
-.display, .container-col {
-    width: 100%; 
-} 
-button{
-    font-size: 60px;
+  font-size: 60px;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: right;
+  overflow-wrap: break-word;
 }
 
+.bg-orange {
+  background: var(--orange);
+}
+.bg-light {
+  background: var(--light-gray);
+}
+
+button {
+  background-color: rgb(30, 28, 28);
+  color: white;
+  font-size: 2rem;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  text-align: center;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+button:hover {
+  font-size: 2.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 240px;
+    min-height: 500px;
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 50px);
+    margin-top: 40px;
+    padding-left: 20px;
+    grid-gap: 5px;
+  }
+  #result {
+    font-size: 40px;
+  }
+  button {
+    font-size: 1.2rem;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  button:hover {
+    font-size: 1.5rem;
+  }
 }
