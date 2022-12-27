@@ -27,48 +27,48 @@ let resultTotal = "";
 
 
 function writeOnScreen(number) {
-    if(number === "-"){
+    if (number === "-") {
 
-        if(action){
-            nextNumber = nextNumber + number; 
-            result.innerText = nextNumber;   
-        } else{
-            nextNumber = number + nextNumber; 
-            result.innerText = nextNumber; 
+        if (action) {
+            nextNumber = nextNumber + number;
+            result.innerText = nextNumber;
+        } else {
+            nextNumber = number + nextNumber;
+            result.innerText = nextNumber;
         }
-      
-    }else{
-        nextNumber = nextNumber + number; 
-        result.innerText = nextNumber;  
-    } 
+
+    } else {
+        nextNumber = nextNumber + number;
+        result.innerText = nextNumber;
+    }
     console.log(nextNumber);
 }
-function changeToNegative(sign){
+function changeToNegative(sign) {
     if (action) {
-        value2 = sign + value2; 
+        value2 = sign + value2;
     }
-  else {
-    value1 = sign + value1; 
-   
+    else {
+        value1 = sign + value1;
+
     }
 }
 
 function concatenate(number) { //only concatenate strings 
     if (action) {
-        value2 = value2 + number; 
+        value2 = value2 + number;
     }
-  else {
-        
-    value1 = value1 + number; 
-   
+    else {
+
+        value1 = value1 + number;
+
     }
 
 }
-function parseToNumber(number){  //change strings to numbers during the calculate  
-    if(/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/
-      .test(number))
-      return Number(number);
-        return NaN;
+function parseToNumber(number) {  //change strings to numbers during the calculate  
+    if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/
+        .test(number))
+        return Number(number);
+    return NaN;
 
 }
 
@@ -114,10 +114,10 @@ nine.addEventListener("click", function () {
     concatenate(9)
 });
 plus.addEventListener("click", function () {
-        calculateInTheOperation()
-        action = 'plus';
-        writeOnScreen("+");
-    
+    calculateInTheOperation()
+    action = 'plus';
+    writeOnScreen("+");
+
 });
 minus.addEventListener("click", function () {
     calculateInTheOperation()
@@ -136,35 +136,28 @@ divided.addEventListener("click", function () {
 });
 percent.addEventListener("click", function () {
     calculateInTheOperation()
-    action='percent';
+    action = 'percent';
     writeOnScreen("%");
 });
 negativeNumber.addEventListener("click", function () {
     writeOnScreen("-");
-    changeToNegative("-"); 
+    changeToNegative("-");
 });
 dot.addEventListener("click", function () {
-        // if(value1.includes(".")){
-        //     writeOnScreen(""); 
-        // }
-        //  else{
-        //     writeOnScreen("."); 
-          
-        // } 
+    if (value1.length < 1) {
+        return;
+    } else if (!value2 && value1.includes(".")) {
+        return;
+    } else if (value2.includes(".")) {
+        return;
+    }
+    writeOnScreen(".");
+    concatenate(".")
 
-        // if(value2.includes(".")){
-        //     writeOnScreen(""); 
-        // }
-        //  else{
-        //     writeOnScreen("."); 
-          
-        // } 
-        writeOnScreen("."); 
-        concatenate(".")  
 })
 deleteNumber.addEventListener("click", function () {
     deleteLastNumber(result.innerText)
-  
+
 });
 resetNumber.addEventListener("click", function () {
     cleanResult()
@@ -196,68 +189,68 @@ function division(n1, n2) {
 
 }
 function percentage(n1, n2) {
-    let resultPercentage = (n1*n2) / 100 ;
+    let resultPercentage = (n1 * n2) / 100;
     let resultPercentageTotal = n1 - resultPercentage;
     result.innerText = resultPercentage;
     return resultPercentageTotal;
 
 }
 
-function calculateInTheOperation(){ //calculate when click second time on math operation
-       
-        if(value1 && action && value2){
+function calculateInTheOperation() { //calculate when click second time on math operation
+
+    if (value1 && action && value2) {
         let result = calculate(value1, action, value2);
         value1 = result; //subscribe value1 with the result of function calculate to start calculation again
         nextNumber = result;
-        } else if(resultTotal){
-            value1 = resultTotal;  //if there is a result after calculate, value1 will be this result; 
-            nextNumber = resultTotal;
+    } else if (resultTotal) {
+        value1 = resultTotal;  //if there is a result after calculate, value1 will be this result; 
+        nextNumber = resultTotal;
 
-        }
     }
+}
 function calculate(n1, operator, n2) {
-      n1 = parseToNumber(n1);
-      n2 =  parseToNumber(n2);
+    n1 = parseToNumber(n1);
+    n2 = parseToNumber(n2);
 
-        if (operator === 'plus') {
-            result.innerText = sum(n1, n2); 
-        } else if (operator === 'minus') {
-            result.innerText = subtraction(n1, n2);
-        } else if (operator === 'times') {
-            result.innerText = multiplication(n1, n2);
-        } else if (operator === 'divided') {
-            result.innerText = division(n1, n2);
-        }
-        else if (operator === 'percent') {
-            result.innerText = percentage(n1, n2);
-        }
-       
+    if (operator === 'plus') {
+        result.innerText = sum(n1, n2);
+    } else if (operator === 'minus') {
+        result.innerText = subtraction(n1, n2);
+    } else if (operator === 'times') {
+        result.innerText = multiplication(n1, n2);
+    } else if (operator === 'divided') {
+        result.innerText = division(n1, n2);
+    }
+    else if (operator === 'percent') {
+        result.innerText = percentage(n1, n2);
+    }
+
     value1 = ""; //continue empty to subscibe the result for new numbers;  
     action = "";
     value2 = "";
     nextNumber = "";
     resultTotal = result.innerText;  //store the result;  
     return result.innerText;
-   
-   
+
+
 }
 
 equals.addEventListener("click", function () {
     calculate(value1, action, value2);
-  
+
 
 });
-function deleteLastNumber(number){
-    if(number.length === 1){
+function deleteLastNumber(number) {
+    if (number.length === 1) {
         number = 0;
         cleanResult()
         result.innerText = 0;
-       
-    }else{
+
+    } else {
         let str = number.slice(0, -1);
         nextNumber = str;
         result.innerText = str;
-       
+
     }
 }
 function cleanResult() {
