@@ -135,9 +135,11 @@ divided.addEventListener("click", function () {
     writeOnScreen("÷");
 });
 percent.addEventListener("click", function () {
-    calculateInTheOperation()
-    action = 'percent';
     writeOnScreen("%");
+    value2 = percentage(value1, value2);
+    console.log(`value2 de porcentagem: ${value2}`)
+    calculateInTheOperation();
+
 });
 negativeNumber.addEventListener("click", function () {
     if (!value2 && value1.includes("-")) {
@@ -196,12 +198,17 @@ function division(n1, n2) {
 
 }
 function percentage(n1, n2) {
-    let resultPercentage = (n1 * n2) / 100;
-    let resultPercentageTotal = n1 - resultPercentage;
-    result.innerText = resultPercentage;
-    return resultPercentageTotal;
-
+    let resultPercentage;
+    if (action === 'times' || action === 'divided') {
+        resultPercentage = (n2 / 100);
+        console.log(`resultPorcentage com times ou divided: ${resultPercentage}`);
+    } else {
+        resultPercentage = n1 * (n2 / 100);
+        console.log(`resultPorcentage com add or minus: ${resultPercentage}`);
+    }
+    return resultPercentage;
 }
+
 function separator(number) {
     let str = number.toString().split(".");
     str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -214,7 +221,6 @@ function calculateInTheOperation() { //calculate when click second time on math 
         value1 = result; //subscribe value1 with the result of function calculate to start calculation again
         nextNumber = result;
         console.log(`nextNumber inside result: ${nextNumber}`);
-
     } else if (resultTotal) {
         value1 = resultTotal;  //if there is a result after calculate, value1 will be this result; 
         nextNumber = resultTotal;
@@ -226,12 +232,8 @@ function calculateInTheOperation() { //calculate when click second time on math 
 }
 
 function calculate(n1, operator, n2) {
-
-
     n1 = parseToNumber(n1);
     n2 = parseToNumber(n2);
-
-
 
     if (operator === 'plus') {
         result.innerText = sum(n1, n2);
@@ -241,9 +243,6 @@ function calculate(n1, operator, n2) {
         result.innerText = multiplication(n1, n2);
     } else if (operator === 'divided') {
         result.innerText = division(n1, n2);
-    }
-    else if (operator === 'percent') {
-        result.innerText = percentage(n1, n2);
     }
 
     result.innerText = separator(result.innerText);
