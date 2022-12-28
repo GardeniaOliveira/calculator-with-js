@@ -37,9 +37,9 @@ body {
   word-break: break-all;
 }
 #result {
-  font-size: 60px;
+  font-size: 80px;
   color: white;
-  font-weight: 700px;
+  font-weight: 300;
   padding: 20px;
   margin-top: 20px;
   text-align: right;
