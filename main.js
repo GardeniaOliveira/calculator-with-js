@@ -19,7 +19,7 @@ const equals = document.getElementById('equals');
 const deleteNumber = document.getElementById('delete');
 const resetNumber = document.getElementById('reset');
 let result = document.getElementById('result');
-let nextNumber = "";
+let current = "";
 let value1 = '';
 let value2 = '';
 let action = '';
@@ -30,18 +30,18 @@ function writeOnScreen(number) {
     if (number === "-") {
 
         if (action) {
-            nextNumber = nextNumber + number;
-            result.innerText = nextNumber;
+            current = current + number;
+            result.innerText = current;
         } else {
-            nextNumber = number + nextNumber;
-            result.innerText = nextNumber;
+            current = number + current;
+            result.innerText = current;
         }
 
     } else {
-        nextNumber = nextNumber + number;
-        result.innerText = nextNumber;
+        current = current + number;
+        result.innerText = current;
     }
-    console.log(`nextNumber : ${nextNumber}`);
+    console.log(`current : ${current}`);
 }
 function changeToNegative(sign) {
     if (action) {
@@ -114,31 +114,47 @@ nine.addEventListener("click", function () {
     concatenate(9)
 });
 plus.addEventListener("click", function () {
-    calculateInTheOperation()
+    if (value1.length < 1 || action) {
+        return;
+    }
     action = 'plus';
+    calculateInTheOperation()
     writeOnScreen("+");
 
 });
 minus.addEventListener("click", function () {
-    calculateInTheOperation()
+    if (value1.length < 1 || action) {
+        return;
+    }
     action = 'minus';
+    calculateInTheOperation()
     writeOnScreen("–");
 });
 times.addEventListener("click", function () {
-    calculateInTheOperation()
+    if (value1.length < 1 || action) {
+        return;
+    }
     action = 'times';
+    calculateInTheOperation()
     writeOnScreen("x");
 });
 divided.addEventListener("click", function () {
-    calculateInTheOperation()
+    if (value1.length < 1 || action) {
+        return;
+    }
     action = 'divided';
+    calculateInTheOperation()
     writeOnScreen("÷");
+
 });
 percent.addEventListener("click", function () {
+    if (!value2 || current.includes("%")) {
+        return;
+    }
     writeOnScreen("%");
     value2 = percentage(value1, value2);
-    console.log(`value2 de porcentagem: ${value2}`)
     calculateInTheOperation();
+
 
 });
 negativeNumber.addEventListener("click", function () {
@@ -219,13 +235,13 @@ function calculateInTheOperation() { //calculate when click second time on math 
     if (value1 && action && value2) {
         let result = calculate(value1, action, value2);
         value1 = result; //subscribe value1 with the result of function calculate to start calculation again
-        nextNumber = result;
-        console.log(`nextNumber inside result: ${nextNumber}`);
+        current = result;
+        console.log(`current inside result: ${current}`);
     } else if (resultTotal) {
         value1 = resultTotal;  //if there is a result after calculate, value1 will be this result; 
-        nextNumber = resultTotal;
+        current = resultTotal;
         value1 = resultTotal;
-        nextNumber = resultTotal;
+        current = resultTotal;
         console.log(`value1 inside resultTotal : ${value1}`);
 
     }
@@ -250,7 +266,7 @@ function calculate(n1, operator, n2) {
     value1 = ""; //continue empty to subscibe the result for new numbers;  
     action = "";
     value2 = "";
-    nextNumber = "";
+    current = "";
     resultTotal = result.innerText;  //store the result, only exist when click in equal;  
     console.log(`ResultTotal : ${resultTotal}`);
     return result.innerText;
@@ -268,7 +284,7 @@ function deleteLastNumber(number) {
 
     } else {
         let str = number.slice(0, -1);
-        nextNumber = str;
+        current = str;
         result.innerText = str;
 
     }
@@ -284,14 +300,13 @@ function deleteLastNumber(number) {
 
 }
 function cleanResult() {
-    nextNumber = "";
+    current = "";
     value1 = "";
     value2 = "";
     action = "";
     result.innerText = 0;
 
 }
-
 
 
 

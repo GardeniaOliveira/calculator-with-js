@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/c474716ce4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap" rel="stylesheet">
@@ -21,7 +20,8 @@
             <p id="result"></p>
         </div>
         <button type="reset" id="reset" class="bg-light">AC</button>
-        <button type="reset" id="delete" class="bg-light"><i class="fas fa-backspace"></i></button>
+        <button type="reset" id="delete" class="bg-light"><ion-icon name="backspace-outline"
+                class="icon"></ion-icon></button>
         <button id="percent" class="bg-light">%</button>
         <button id="division" class="bg-orange">÷</button>
         <button id="seven">7</button>
@@ -45,6 +45,8 @@
     </div>
 
     <script src="main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

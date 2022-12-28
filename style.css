@@ -5,7 +5,7 @@
 }
 :root {
   --light-gray: #a0a0a0;
-  --medium-gray: #313131;
+  --medium-gray: #333333;
   --orange: #f69906;
 }
 body {
@@ -24,7 +24,6 @@ body {
   align-content: center;
   grid-template-columns: repeat(4, 90px);
   grid-template-rows: minmax(120px, auto) repeat(5, 90px);
-  row-gap: 10px;
 }
 
 .display {
@@ -56,7 +55,7 @@ body {
 }
 
 button {
-  background-color: rgb(30, 28, 28);
+  background-color: var(--medium-gray);
   color: white;
   font-size: 35px;
   border: none;
@@ -72,6 +71,9 @@ button {
 button:hover {
   font-size: 40px;
   font-weight: 600;
+}
+.icon {
+  font-size: 35px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -94,6 +96,9 @@ button:hover {
     cursor: pointer;
   }
   button:hover {
+    font-size: 25px;
+  }
+  .icon {
     font-size: 25px;
   }
 }
