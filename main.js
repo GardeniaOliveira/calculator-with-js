@@ -18,6 +18,7 @@ const negativeNumber = document.getElementById('negative');
 const equals = document.getElementById('equals');
 const deleteNumber = document.getElementById('delete');
 const resetNumber = document.getElementById('reset');
+let previous = document.getElementById('previous');
 let result = document.getElementById('result');
 let current = "";
 let value1 = '';
@@ -41,7 +42,7 @@ function writeOnScreen(number) {
         current = current + number;
         result.innerText = current;
     }
-    console.log(`current : ${current}`);
+    previous.innerText = current;
 }
 function changeToNegative(sign) {
     if (action) {
@@ -307,6 +308,7 @@ function cleanResult() {
     value2 = "";
     action = "";
     result.innerText = 0;
+    previous.innerText = "";
 
 }
 

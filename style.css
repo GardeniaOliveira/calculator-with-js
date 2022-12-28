@@ -18,17 +18,18 @@ body {
 .container {
   width: 100vw;
   min-height: 100vh;
-  background: #000;
+  background: white;
   display: grid;
   justify-content: center;
   align-content: center;
   grid-template-columns: repeat(4, 90px);
   grid-template-rows: minmax(120px, auto) repeat(5, 90px);
+  grid-gap: 5px;
 }
 
 .display {
   grid-column: 1 / -1;
-  background-color: black;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -38,10 +39,17 @@ body {
 }
 #result {
   font-size: 80px;
-  color: white;
+  color: black;
   font-weight: 300;
   padding: 20px;
-  margin-top: 20px;
+  text-align: right;
+  overflow-wrap: break-word;
+}
+#previous {
+  font-size: 40px;
+  color: var(--medium-gray);
+  font-weight: 300;
+  padding: 20px;
   text-align: right;
   overflow-wrap: break-word;
 }
@@ -49,23 +57,24 @@ body {
 .bg-orange {
   background-color: var(--orange);
 }
-.bg-light {
+/* .bg-light {
   background-color: var(--light-gray);
   color: #000;
-}
+} */
 
 button {
-  background-color: var(--medium-gray);
-  color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background: #e0e0e0;
+  box-shadow: 5px 5px 5px #bebebe, -5px -5px 5px #ffffff;
+  color: black;
   font-size: 35px;
   border: none;
   outline: none;
   font-weight: 500;
   text-align: center;
-  width: 80%;
-  height: 80%;
-  margin-left: 10px;
-  border-radius: 50%;
+  margin-left: 5px;
   cursor: pointer;
 }
 button:hover {
@@ -79,27 +88,25 @@ button:hover {
 
 @media only screen and (min-width: 768px) {
   .container {
-    width: 240px;
+    width: 400px;
     min-height: 500px;
-    grid-template-columns: repeat(4, 50px);
-    grid-template-rows: minmax(120px, auto) repeat(5, 50px);
     margin-top: 40px;
-    grid-gap: 5px;
   }
   #result {
     font-size: 40px;
   }
-  button {
+
+  #previous {
     font-size: 20px;
-    width: 80%;
-    height: 80%;
-    border-radius: 50%;
-    cursor: pointer;
+    color: var(--medium-gray);
+  }
+  button {
+    font-size: 30px;
   }
   button:hover {
-    font-size: 25px;
+    font-size: 35px;
   }
   .icon {
-    font-size: 25px;
+    font-size: 35px;
   }
 }
