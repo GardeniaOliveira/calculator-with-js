@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 :root {
-  --light-gray: #a0a0a0;
+  --light-gray: #a5a5a5;
   --medium-gray: #333333;
   --orange: #f69906;
 }
@@ -39,7 +39,7 @@ body {
 #result {
   font-size: 60px;
   color: white;
-  font-weight: bold;
+  font-weight: 700px;
   padding: 20px;
   margin-top: 20px;
   text-align: right;
@@ -73,7 +73,8 @@ button:hover {
   font-weight: 600;
 }
 .icon {
-  font-size: 35px;
+  font-size: 50px;
+  padding-top: 5px;
 }
 
 @media only screen and (min-width: 768px) {

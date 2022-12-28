@@ -114,36 +114,36 @@ nine.addEventListener("click", function () {
     concatenate(9)
 });
 plus.addEventListener("click", function () {
+    calculateInTheOperation()
     if (value1.length < 1 || action) {
         return;
     }
     action = 'plus';
-    calculateInTheOperation()
     writeOnScreen("+");
 
 });
 minus.addEventListener("click", function () {
+    calculateInTheOperation()
     if (value1.length < 1 || action) {
         return;
     }
     action = 'minus';
-    calculateInTheOperation()
     writeOnScreen("–");
 });
 times.addEventListener("click", function () {
+    calculateInTheOperation()
     if (value1.length < 1 || action) {
         return;
     }
     action = 'times';
-    calculateInTheOperation()
     writeOnScreen("x");
 });
 divided.addEventListener("click", function () {
+    calculateInTheOperation()
     if (value1.length < 1 || action) {
         return;
     }
     action = 'divided';
-    calculateInTheOperation()
     writeOnScreen("÷");
 
 });
@@ -155,14 +155,15 @@ percent.addEventListener("click", function () {
     value2 = percentage(value1, value2);
     calculateInTheOperation();
 
-
 });
 negativeNumber.addEventListener("click", function () {
-    if (!value2 && value1.includes("-")) {
-        return;
-    } else if (value2.includes("-")) {
+    if (value1.includes("-")) {
         return;
     }
+    //  else if (value2.includes("-")) {
+    //     return;
+    // }
+
     writeOnScreen("-");
     changeToNegative("-");
 });
@@ -211,6 +212,7 @@ function division(n1, n2) {
     let resultDivision = n1 / n2;
     result.innerText = resultDivision;
     return resultDivision;
+
 
 }
 function percentage(n1, n2) {
