@@ -185,11 +185,28 @@ function calculate(n1, operator, n2) {
     return total;
 }
 function deleteLastNumber(number) {
+    let cleanedAction = false;
+    if (["–", 'x', '+', '÷'].includes(number.charAt(number.length - 1))) {
+        action = "";
+        cleanedAction = true;
+        console.log(cleanedAction, 'cleanedAction');
+    }
+    if (action) {
+        str = value2.slice(0, -1);
+        value2 = str;
+        console.log(value2, 'value2');
+
+    } else if (!cleanedAction) {
+        str = value1.slice(0, -1);
+        value1 = str;
+        console.log(value1, 'value1');
+    }
+
     if (resultTotal) {
+        console.log(resultTotal)
         return;
     }
     if (number.length === 1) { // delete only on screen
-        number = 0;
         cleanResult()
         result.innerText = 0;
     } else {
@@ -198,27 +215,10 @@ function deleteLastNumber(number) {
         result.innerText = str;
     }
     if (previous.innerText.length === 1) { // delete only on screen
-        number = 0;
-        cleanResult()
         previous.innerText = 0;
     } else {
-        let str = number.slice(0, -1);
-        current = str;
+        let str = previous.innerText.slice(0, -1);
         previous.innerText = str;
-    }
-
-    if (action) {
-        str = value2.slice(0, -1); // update of value2 without delete numbers
-        value2 = str;
-
-    }
-    else {
-        str = value1.slice(0, -1); // update of value1 without delete numbers 
-        value1 = str;
-    }
-    console.log(value2);
-    if (value2 === "") {
-        action = "";
     }
 }
 function cleanResult() {
