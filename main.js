@@ -24,8 +24,10 @@ numberButton.forEach((btn) => {
 operatorButton.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         let value = e.target.innerText;
+        console.log(action, value);
         calculateInTheOperation()
         if (value1.length < 1 || action) {
+            console.log(value1);
             return;
         }
         if (value === '+') {
@@ -37,6 +39,7 @@ operatorButton.forEach((btn) => {
         } else if (value === '÷') {
             action = 'divided';
         }
+        console.log(action)
         writeOnScreen(value);
     })
 })
@@ -212,6 +215,10 @@ function deleteLastNumber(number) {
     else {
         str = value1.slice(0, -1); // update of value1 without delete numbers 
         value1 = str;
+    }
+    console.log(value2);
+    if (value2 === "") {
+        action = "";
     }
 }
 function cleanResult() {
