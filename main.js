@@ -158,12 +158,12 @@ percent.addEventListener("click", function () {
 
 });
 negativeNumber.addEventListener("click", function () {
-    if (value1.includes("-")) {
+    if (!action && value1.includes("-")) {
         return;
     }
-    //  else if (value2.includes("-")) {
-    //     return;
-    // }
+    else if (value2.includes("-")) {
+        return;
+    }
 
     writeOnScreen("-");
     changeToNegative("-");
