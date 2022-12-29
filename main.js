@@ -55,7 +55,7 @@ function writeOnScreen(value) {
         result.innerText = current;
     }
     previous.innerText = current;
-    console.log(previous);
+    console.log(current);
 }
 function changeToNegative(sign) {
     action ? value2 = sign + value2 : value1 = sign + value1;
@@ -63,6 +63,8 @@ function changeToNegative(sign) {
 function concatenate(number) { //only concatenate strings 
     resultTotal = "";
     action ? value2 = value2 + number : value1 = value1 + number;
+    console.log(value1)
+    console.log(value2)
 }
 function parseToNumber(number) {  //change strings with dot to numbers during the calculate  
     if (/^(\-|\+)?([0-9]+(\.[0-9]+)?|Infinity)$/
@@ -124,7 +126,7 @@ function percentage(n1, n2) {
     }
     return resultPercentage;
 }
-function formatDisplayNumber(number) { //format the result to decimal format
+function formatDisplayNumber(number) { //format the result to decimal 
     const stringNumber = number.toString();
     const integerDigits = parseFloat(stringNumber.split(".")[0]);
     const decimalDigits = stringNumber.split(".")[1];
@@ -181,7 +183,7 @@ function calculate(n1, operator, n2) {
 }
 function deleteLastNumber(number) {
     if (resultTotal) {
-        return
+        return;
     }
     if (number.length === 1) { // delete only on screen
         number = 0;
@@ -192,10 +194,20 @@ function deleteLastNumber(number) {
         current = str;
         result.innerText = str;
     }
+    if (previous.innerText.length === 1) { // delete only on screen
+        number = 0;
+        cleanResult()
+        previous.innerText = 0;
+    } else {
+        let str = number.slice(0, -1);
+        current = str;
+        previous.innerText = str;
+    }
 
     if (action) {
         str = value2.slice(0, -1); // update of value2 without delete numbers
         value2 = str;
+
     }
     else {
         str = value1.slice(0, -1); // update of value1 without delete numbers 
