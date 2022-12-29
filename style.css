@@ -58,10 +58,6 @@ body {
 .bg-orange {
   background-color: var(--orange);
 }
-/* .bg-light {
-  background-color: var(--light-gray);
-  color: #000;
-} */
 
 button {
   width: 80px;
