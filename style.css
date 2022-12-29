@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 :root {
+  --bg-color: #e1e1e1;
   --light-gray: #a5a5a5;
   --medium-gray: #333333;
   --orange: #f69906;
@@ -87,10 +88,18 @@ button:hover {
 }
 
 @media only screen and (min-width: 768px) {
+  body {
+    background-color: var(--bg-color);
+  }
   .container {
-    width: 400px;
-    min-height: 500px;
-    margin-top: 40px;
+    background-color: var(--bg-color);
+    margin-top: 20px;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 80px);
+    grid-gap: 5px;
+  }
+  .display {
+    background-color: var(--bg-color);
   }
   #result {
     font-size: 40px;
@@ -101,6 +110,8 @@ button:hover {
     color: var(--medium-gray);
   }
   button {
+    width: 70px;
+    height: 70px;
     font-size: 30px;
   }
   button:hover {

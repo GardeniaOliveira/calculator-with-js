@@ -253,15 +253,21 @@ function calculateInTheOperation() { //calculate when click second time on math 
 function calculate(n1, operator, n2) {
     n1 = parseToNumber(n1);
     n2 = parseToNumber(n2);
+    let total = "";
 
     if (operator === 'plus') {
-        result.innerText = sum(n1, n2);
+        total = sum(n1, n2);
+        result.innerText = total.toFixed(2);
+
     } else if (operator === 'minus') {
-        result.innerText = subtraction(n1, n2);
+        total = subtraction(n1, n2);
+        result.innerText = total.toFixed(2);
     } else if (operator === 'times') {
-        result.innerText = multiplication(n1, n2);
+        total = multiplication(n1, n2);
+        result.innerText = total.toFixed(2);
     } else if (operator === 'divided') {
-        result.innerText = division(n1, n2);
+        total = division(n1, n2);
+        result.innerText = total.toFixed(2);
     }
 
     result.innerText = separator(result.innerText);
